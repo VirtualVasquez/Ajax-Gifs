@@ -6,7 +6,7 @@ var topics = ['My Hero Academia', 'DragonBall', 'Full Metal Alchemist',
 
 //MAKE A LOOP THAT APPENDS TOPICS ARRAY TO #BUTTONS
 function renderButtons(){
-
+	$('#buttons').empty();
 	//looping through the array of topics
 	for (var i = 0; i < topics.length; i++){
 		//dynamically generates buttons for each topic in the array

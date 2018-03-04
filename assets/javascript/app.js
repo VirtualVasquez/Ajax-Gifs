@@ -1,43 +1,82 @@
+//VARIABLES AND FUNCTIONS
+//===================================================================================
 var topics = ['My Hero Academia', 'DragonBall', 'Full Metal Alchemist',
-'Naruto', 'Attack on Titan', 'Bono Bono', 'Yu-Gi-Oh', 'Digimon', 'Pokemon'
-'Bleach' ]
+'Naruto', 'Attack on Titan', 'One Punch Man', 'Yu-Gi-Oh', 'Digimon', 'Pokemon',
+'Bleach']
 
-var show = aMuZaMUV4XlGlcpfWZ91SRE076EX4Av3
-var queryURL = "http://api.giphy.com/v1/gifs/search?q=" +
-show + "&api_key=aMuZaMUV4XlGlcpfWZ91SRE076EX4Av3"
+//MAKE A LOOP THAT APPENDS TOPICS ARRAY TO #BUTTONS
+function renderButtons(){
+    // Deleting the topics prior to adding new topics
+    // (this is necessary otherwise you will have repeat buttons)
+	$('#buttons').empty();
 
-//make a for loop that appends topics array as a button to $(#buttons)
+	//looping through the array of topics
+	for (var i = 0; i < topics.length; i++){
+		//dynamically generates buttons for each topic in the array
+		var a = $('<button>');
+		//adding a class of topic-btn to our button
+		a.addClass('topic');
+		//adding a data-attribute
+		a.attr('data-name', topics[i]);
+		//providing the initial button text
+		a.text(topics[i]);
+		//adding the button to the buttons-view div
+		$('#buttons').append(a);
+	}
+};
+
+
+
+//MAIN PROCESSES
+//===================================================================================
+
 $(document).ready(function(){
 
+	renderButtons();
+	//WHEN #buttons CLICKED...
+	//THEN GENERATE 10 PAUSED GIFS WITH RATING
+	$('button.topic').on("click", function(){
+		var show = $(this).attr('data-name');
+		//clear #gifHolder
+		$('#gifHolder').empty();
+		var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + 
+		show + "&api_key=aMuZaMUV4XlGlcpfWZ91SRE076EX4Av3";
 
-	function renderButtons(){
-        // Deleting the topics prior to adding new topics
-        // (this is necessary otherwise you will have repeat buttons)
-		$('#buttons').empty();
+		$.ajax({
+			url: queryURL,
+			method: "GET"
+		})
+		  .then(function(response){
+		  	var results = response.data;
+		  	//generates 10 GIFs, hence i < 10 
+		  	for (var i = 0; i < 10; i++){
+		  		var gifDiv = $("<div class='item'>");
+		  		var rating = results[i].rating;
+		  		var p = $("<p>").text("Rating: " + rating);
+		  		
+		  		var showImage = $("<img>");
+		  		showImage.addClass('gif');
+		  		
+		  		showImage.attr("src", results[i].images.fixed_height.url);
+		  		//***append the gifs to #gifHolder
+		  		gifDiv.prepend(p);
+		  		//***below every gif, display its rating 
+		  		gifDiv.prepend(showImage);
 
-		//looping through the array of topics
-		for (var i = 0; i < topics.length; i++){
-			//dynamically generates buttons for each topic in the array
-			var a = $('<button>');
-			//adding a class of topic-btn to our button
-			a.addClass('topic-btn');
-			//adding a data-attribute
-			a.attr('data-name', topics[i]);
-			//providing the intiial button text
-			a.text(topics[i]);
-			//adding the button to the buttons-view div
-			$('#buttons').append(a);
-		}
-	};
-};
-//when a button in the #buttons container is clicked, 
-//clear #gifHolder container, then generate 10 GIFs
-	//append the gifs to #gifHolder
-	//gifs MUST be still/paused
-	//below every gif, display its rating 
+		  		$("#gifHolder").prepend(gifDiv);
+		  	}
 
-//on click, make GIPHY image animate
-	//if giphy is playing, stop animation
+		  })
+	})
+
+	$('.gif').on("click", function(){
+
+	})
+});
+	//***gifs MUST be still/paused
+
+//***on click, make GIPHY image animate
+	//***if giphy is playing, stop animation
 
 //-----------STOP HERE AND MAKE SURE THE STUFF ABOVE WORKS!----------------------
 

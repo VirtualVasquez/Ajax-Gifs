@@ -37,7 +37,7 @@ $(document).ready(function(){
 		console.log(show);
 		//clear #gifHolder
 		$('#gifHolder').empty();
-		var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + 
+		var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + 
 		show + "&api_key=aMuZaMUV4XlGlcpfWZ91SRE076EX4Av3";
 
 		$.ajax({

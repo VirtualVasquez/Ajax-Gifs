@@ -6,9 +6,6 @@ var topics = ['My Hero Academia', 'DragonBall', 'Full Metal Alchemist',
 
 //MAKE A LOOP THAT APPENDS TOPICS ARRAY TO #BUTTONS
 function renderButtons(){
-    // Deleting the topics prior to adding new topics
-    // (this is necessary otherwise you will have repeat buttons)
-	$('#buttons').empty();
 
 	//looping through the array of topics
 	for (var i = 0; i < topics.length; i++){
@@ -37,6 +34,7 @@ $(document).ready(function(){
 	//THEN GENERATE 10 PAUSED GIFS WITH RATING
 	$('button.topic').on("click", function(){
 		var show = $(this).attr('data-name');
+		console.log(show);
 		//clear #gifHolder
 		$('#gifHolder').empty();
 		var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + 
@@ -50,28 +48,45 @@ $(document).ready(function(){
 		  	var results = response.data;
 		  	//generates 10 GIFs, hence i < 10 
 		  	for (var i = 0; i < 10; i++){
-		  		var gifDiv = $("<div class='item'>");
+		  		var gifDiv = $("<div class ='item'>");
 		  		var rating = results[i].rating;
 		  		var p = $("<p>").text("Rating: " + rating);
 		  		
 		  		var showImage = $("<img>");
-		  		showImage.addClass('gif');
-		  		
-		  		showImage.attr("src", results[i].images.fixed_height.url);
+		  		showImage.attr("src", results[i].images.fixed_height_still.url);
+		  		showImage.attr('data-still', results[i].images.fixed_height_still.url);
+				showImage.attr('data-animate', results[i].images.fixed_height.url);
+				showImage.attr('data-state', 'still');
+				showImage.addClass('gif');
 		  		//***append the gifs to #gifHolder
 		  		gifDiv.prepend(p);
 		  		//***below every gif, display its rating 
 		  		gifDiv.prepend(showImage);
 
 		  		$("#gifHolder").prepend(gifDiv);
+
+		  			$('div > img.gif').on('click', function(){
+
+					var state = $(this).attr('data-state');
+					console.log(state);
+
+				//if (state == 'still'){
+				//	state = 'animate';
+				//	$(this).attr('data-state', state);
+				//	$(this).attr('src', $(this).attr('data-animate'))
+				//}
+				//else{
+				//	state = 'still';
+				//	$(this).attr('data-state', state);
+				//	$(this).attr('src', $(this).attr('data-still'));
+				//}
+				});
 		  	}
 
 		  })
-	})
+	});
 
-	$('.gif').on("click", function(){
 
-	})
 });
 	//***gifs MUST be still/paused
 

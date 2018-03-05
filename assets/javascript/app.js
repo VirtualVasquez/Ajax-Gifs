@@ -58,30 +58,32 @@ $(document).ready(function(){
 				showImage.attr('data-animate', results[i].images.fixed_height.url);
 				showImage.attr('data-state', 'still');
 				showImage.addClass('gif');
-		  		//***append the gifs to #gifHolder
+		  		//***append the gifs to #gifHolder paused
 		  		gifDiv.prepend(p);
 		  		//***below every gif, display its rating 
 		  		gifDiv.prepend(showImage);
 
 		  		$("#gifHolder").prepend(gifDiv);
 
-		  			$('div > img.gif').on('click', function(){
+		  	}
+
+			$('div > img.gif').on('click', function(){
 
 					var state = $(this).attr('data-state');
 					console.log(state);
-
-				//if (state == 'still'){
-				//	state = 'animate';
-				//	$(this).attr('data-state', state);
-				//	$(this).attr('src', $(this).attr('data-animate'))
-				//}
-				//else{
-				//	state = 'still';
-				//	$(this).attr('data-state', state);
-				//	$(this).attr('src', $(this).attr('data-still'));
-				//}
-				});
-		  	}
+				//if gif is paused, click will animate
+				if (state == 'still'){
+					state = 'animate';
+					$(this).attr('data-state', state);
+					$(this).attr('src', $(this).attr('data-animate'))
+				}
+				//if gif is animated, click will pause
+				else{
+					state = 'still';
+					$(this).attr('data-state', state);
+					$(this).attr('src', $(this).attr('data-still'));
+				}
+			});  	
 
 		  })
 	});

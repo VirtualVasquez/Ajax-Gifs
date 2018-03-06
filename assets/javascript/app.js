@@ -22,8 +22,6 @@ function renderButtons(){
 	}
 };
 
-
-
 //MAIN PROCESSES
 //===================================================================================
 
@@ -39,12 +37,11 @@ $(document).ready(function(){
 		$('#gifHolder').empty();
 		var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + 
 		show + "&api_key=aMuZaMUV4XlGlcpfWZ91SRE076EX4Av3";
-
 		$.ajax({
 			url: queryURL,
 			method: "GET"
 		})
-		  .then(function(response){
+		.then(function(response){
 		  	var results = response.data;
 		  	//generates 10 GIFs, hence i < 10 
 		  	for (var i = 0; i < 10; i++){
@@ -62,15 +59,14 @@ $(document).ready(function(){
 		  		gifDiv.prepend(p);
 		  		//***below every gif, display its rating 
 		  		gifDiv.prepend(showImage);
-
 		  		$("#gifHolder").prepend(gifDiv);
-
 		  	}
 
-			$('div > img.gif').on('click', function(){
 
-					var state = $(this).attr('data-state');
-					console.log(state);
+			// When clicking on an Anime Show Button	  	
+			$('div > img.gif').on('click', function(){
+				var state = $(this).attr('data-state');
+				console.log(state);
 				//if gif is paused, click will animate
 				if (state == 'still'){
 					state = 'animate';
@@ -83,19 +79,24 @@ $(document).ready(function(){
 					$(this).attr('data-state', state);
 					$(this).attr('src', $(this).attr('data-still'));
 				}
-			});  	
+			});			
 
-		  })
+
+
+			//To submit a new button to the array
+			$('#addButton').on("click", function(event){
+				event.preventDefault();
+				//take the string from "#animeInput" and add it to the array
+				var newButton = $("#animeInput").val().trim();
+    			topics.push(newButton);
+    			console.log(topics);
+    			$('#animeInput').val('');
+    			renderButtons();
+			}); 
+
+		});
+
 	});
-
-
 });
-	//***gifs MUST be still/paused
 
-//***on click, make GIPHY image animate
-	//***if giphy is playing, stop animation
 
-//-----------STOP HERE AND MAKE SURE THE STUFF ABOVE WORKS!----------------------
-
-//take the string from "#cartoonInput" and add it to the array
-	//have function remake the buttons added to it

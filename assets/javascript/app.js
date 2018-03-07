@@ -1,3 +1,4 @@
+//MY ORIGINAL WORK FOR THIS ASSIGNMENT
 //VARIABLES AND FUNCTIONS
 //===================================================================================
 var topics = ['My Hero Academia', 'DragonBall', 'Full Metal Alchemist',

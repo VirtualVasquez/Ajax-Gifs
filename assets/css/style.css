@@ -1,0 +1,26 @@
+#top{
+	background-image: url("../../assets/images/banner.jpg");
+	height: 350px;
+	width: 1440px;
+	margin-left: 2%;
+}
+
+#buttons{
+	margin: 2%;
+}
+
+
+#search{
+	padding-top: 2%;
+	padding-bottom: 3%;
+}
+
+body{
+	background-color: #ae6eaf;
+}
+h1{
+	color:white;
+	font-size: 56px;
+	text-shadow: 2px 2px black;
+	margin-top: 150px;
+}

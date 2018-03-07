@@ -14,7 +14,7 @@ Ultimately, the project came out quite successful, although given more time, I w
 ## Links
 
 To see the page immediately: https://virtualvasquez.github.io/Ajax-Gifs/
-To see it in my portfolio (still in progress):https://virtualvasquez.github.io/Basic-Portfolio/portfolio.html 
+To view it in my portfolio (still in progress):https://virtualvasquez.github.io/Basic-Portfolio/portfolio.html 
 
 
 

@@ -10,23 +10,23 @@ The purpose of this assignment was to learn the concepts of AJAX (Asynchronous J
 
 When the page loads, a function generates a series of buttons from a pre-made array to an existing div in the HTML file. 
 
-![animeStart.png](assets/images/animeStart.png "The webpage once it is loaded.")
+![animeStart.png](assets/images/animeStart.PNG "The webpage once it is loaded.")
 
 Upon clicking one of those buttons, 10 paused GIFs related to the topic selected will be generated below to a prexisting div by making an ajax request to Giphy. Clicking a GIF once will cause it to animate. Clicking a GIF that is currently animating will pause it.
 
-![animeGenerate.png](assets/images/animeGenerate.png "Two of the ten GIFs generate from Full Metal Alchemist.")
+![animeGenerate.png](assets/images/animeGenerate.PNG "Two of the ten GIFs generate from Full Metal Alchemist.")
 
 If another button is pressed, the GIFs in the div are completely removed, and a new set of GIFs will be generated for in their place.
 
-![newGifs.png](assets/images/newGifs.png "The gifs displayed are now related to Naruto.")
+![newGifs.png](assets/images/newGifs.PNG "The gifs displayed are now related to Naruto.")
 
 More buttons can be added in the search box on the right side of the page, of which can then be pressed to generate another 10 GIFs for the topic it's labeled for.
 
-![addBefore.png](assets/images/addBefore.png "Let's add a Cowboy Bebop button.")
+![addBefore.png](assets/images/addBefore.PNG "Let's add a Cowboy Bebop button.")
 
-![addAfter.png](assets/images/addAfter.png "Now let's click it!")
+![addAfter.png](assets/images/addAfter.PNG "Now let's click it!")
 
-![addGifs.png](assets/images/addGifs.png "Cue the catchy theme music.")
+![addGifs.png](assets/images/addGifs.PNG "Cue the catchy theme music.")
 
 **NOTE:** Refreshing the page will remove any buttons that were added by the user, as there is no database that retaining this information. 
 

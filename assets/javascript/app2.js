@@ -1,4 +1,3 @@
-//THIS CODE WAS CREATED WITH THE AIDE OF JONATHAN - THANK YOU!!!
 //VARIABLES AND FUNCTIONS
 //===================================================================================
 var topics = ['My Hero Academia', 'DragonBall', 'Full Metal Alchemist',
@@ -27,6 +26,7 @@ function renderButtons(){
 //===================================================================================
 
 $(document).ready(function(){
+
   $('#gifHolder').delegate('img.gif', 'click', function(){
     var state = $(this).data('state');
     console.log(state);
@@ -42,7 +42,8 @@ $(document).ready(function(){
       $(this).data('state', state);
       $(this).attr('src', $(this).data('still'));
     }
-  });     
+  });
+
   $('#addButton').on("click", function(event){
     event.preventDefault();
     //take the string from "#animeInput" and add it to the array
@@ -51,14 +52,19 @@ $(document).ready(function(){
       $('#animeInput').val('');
       renderButtons();
   }); 
+
   renderButtons();
   //WHEN #buttons CLICKED...
   //THEN GENERATE 10 PAUSED GIFS WITH RATING
   $("#buttons").delegate("button.topic", "click", function(){
+
     var show = $(this).attr('data-name');
+    
     console.log(show);
+    
     //clear #gifHolder
     $('#gifHolder').empty();
+    
     var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + 
     show + "&api_key=aMuZaMUV4XlGlcpfWZ91SRE076EX4Av3";
     $.ajax({
@@ -85,8 +91,9 @@ $(document).ready(function(){
           $("#gifHolder").prepend(gifDiv);
         }
     });
-
+    
   });
+
 });
 
 

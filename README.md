@@ -24,9 +24,15 @@ More buttons can be added in the search box on the right side of the page, of wh
 
 ![addBefore.png](assets/images/addBefore.PNG "Let's add a Cowboy Bebop button.")
 
+"Let's add a Cowboy Bebop button."
+
 ![addAfter.png](assets/images/addAfter.PNG "Now let's click it!")
 
+"Now let's click it!"
+
 ![addGifs.png](assets/images/addGifs.PNG "Cue the catchy theme music.")
+
+"Cue the catchy theme music."
 
 **NOTE:** Refreshing the page will remove any buttons that were added by the user, as there is no database that retaining this information. 
 

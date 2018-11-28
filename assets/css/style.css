@@ -1,26 +1,55 @@
-#top{
-	background-image: url("../../assets/images/banner.jpg");
-	height: 350px;
-	width: 1440px;
-	margin-left: 2%;
-}
-
-#buttons{
-	margin: 2%;
-}
-
-
-#search{
-	padding-top: 2%;
-	padding-bottom: 3%;
-}
-
 body{
 	background-color: #ae6eaf;
 }
+header{
+	position: relative;
+    text-align: center;
+    color: white;
+}
+img{
+	width: 100%;
+}
+.centered{
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
 h1{
 	color:white;
-	font-size: 56px;
-	text-shadow: 2px 2px black;
-	margin-top: 150px;
+	font-size: 48px;	text-shadow: 4px 4px black;
 }
+h2{
+	color:white;
+	text-shadow: 2px 2px black;
+	text-decoration: underline;
+}
+
+#buttons button{
+	padding: 2%;
+	margin: 0.25%;
+	font-size: 16px;
+	font-weight: bold;
+	color: white;
+    background: linear-gradient(to top, #ae6eaf 0%, #ccccff 100%);
+	border-color: #ae6eaf;
+	border-style: solid;
+	border-width: 2px;;
+}
+
+#newButtons button{
+	width: 100%;
+	padding-top: 100px;
+}
+
+/* .item{
+	padding: 1%;
+	margin: 1%;
+	background-color: white;
+	height: auto;
+}
+
+.gif{
+	width: 100%;
+	height: auto;
+} */

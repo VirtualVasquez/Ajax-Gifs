@@ -43,7 +43,8 @@ function renderNewButtons(){
 
 $(document).ready(function(){
   renderButtons();
-
+// Event Listeners
+  //Clicking on a GIF
   $('#gifHolder').delegate('img.gif', 'click', function(){
     var state = $(this).data('state');
     //if gif is paused, click will animate
@@ -59,18 +60,7 @@ $(document).ready(function(){
       $(this).attr('src', $(this).data('still'));
     }
   });
-
-  $('#addButton').on("click", function(event){
-    event.preventDefault();
-    //take the string from "#animeInput" and add it to the array
-    var newButton = $("#animeInput").val().trim();
-      newTopics.push(newButton);
-      $('#animeInput').val('');
-      renderNewButtons();
-  }); 
-
-  //WHEN #buttons CLICKED...
-  //THEN GENERATE 10 PAUSED GIFS WITH RATING
+  //Click an Original Button
   $("#buttons").delegate("button.topic", "click", function(){
     var show = $(this).attr('data-name');    
     //clear #gifHolder
@@ -84,10 +74,10 @@ $(document).ready(function(){
     .then(function(response){
         var results = response.data;
         //generates 10 GIFs, hence i < 10 
-        for (var i = 0; i < 10; i++){
-          var gifDiv = $("<div class='item col-xs-12'>"),
+        for (var i = 0; i < 12; i++){
+          var gifDiv = $("<div class='item col-xs-12 col-sm-6 col-lg-4'>"),
               rating = results[i].rating,
-              p = $("<p>").addClass('col-xs-12').text("Rating: " + rating);
+              p = $("<p>").addClass('rating').text("Rating: " + rating);
           var showImage = $("<img>");
           showImage.attr("src", results[i].images.fixed_height_still.url)
                    .data('still', results[i].images.fixed_height_still.url)
@@ -101,7 +91,16 @@ $(document).ready(function(){
         }
     });
   });
-
+  //Create a New Buttons
+  $('#addButton').on("click", function(event){
+    event.preventDefault();
+    //take the string from "#animeInput" and add it to the array
+    var newButton = $("#animeInput").val().trim();
+      newTopics.push(newButton);
+      $('#animeInput').val('');
+      renderNewButtons();
+  }); 
+  //Click on New Button
   $("#newButtons").delegate("button.topic", "click", function(){
     var show = $(this).attr('data-name');    
     //clear #gifHolder
@@ -115,25 +114,21 @@ $(document).ready(function(){
     .then(function(response){
         var results = response.data;
         //generates 10 GIFs, hence i < 10 
-        for (var i = 0; i < 10; i++){
-          var gifDiv = $("<div class ='item col-xs-6'>"),
+        for (var i = 0; i < 12; i++){
+          var gifDiv = $("<div class='item col-xs-12 col-sm-6 col-lg-4'>"),
               rating = results[i].rating,
-              p = $("<p>").text("Rating: " + rating);
+              p = $("<p>").addClass('rating').text("Rating: " + rating);
           var showImage = $("<img>");
           showImage.attr("src", results[i].images.fixed_height_still.url)
                    .data('still', results[i].images.fixed_height_still.url)
                    .data('animate', results[i].images.fixed_height.url)
                    .data('state', 'still')
-                   .addClass('gif');
+                   .addClass('gif col-xs-12');
           //***append the gifs to #gifHolder paused
           gifDiv.prepend(p).prepend(showImage);
           //***below every gif, display its rating
           $("#gifHolder").prepend(gifDiv);
         }
     });
-    
   });
-
 });
-
-

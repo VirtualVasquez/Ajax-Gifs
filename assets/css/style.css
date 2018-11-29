@@ -6,7 +6,7 @@ header{
     text-align: center;
     color: white;
 }
-img{
+header img{
 	width: 100%;
 }
 .centered{
@@ -17,39 +17,61 @@ img{
 }
 h1{
 	color:white;
-	font-size: 48px;	text-shadow: 4px 4px black;
+	font-size: 48px;	
+	text-shadow: 4px 4px black;
 }
 h2{
 	color:white;
 	text-shadow: 2px 2px black;
 	text-decoration: underline;
 }
-
-#buttons button{
-	padding: 2%;
-	margin: 0.25%;
+.centerLabel{
+	text-align: center;
+}
+.color{
+	border-color:white;
+	border-style: solid;
+	border-width: 2px;
+}
+button, #addButton{
 	font-size: 16px;
 	font-weight: bold;
 	color: white;
     background: linear-gradient(to top, #ae6eaf 0%, #ccccff 100%);
 	border-color: #ae6eaf;
 	border-style: solid;
-	border-width: 2px;;
+	border-width: 2px;
 }
-
-#newButtons button{
-	width: 100%;
-	padding-top: 100px;
+button{
+	padding: 2%;
+	margin: 0.5%;
 }
-
-/* .item{
-	padding: 1%;
-	margin: 1%;
-	background-color: white;
-	height: auto;
+#newButtons button, input{
+	width: 80%;
+	margin-left: 10%;
+}
+input{
+	padding: 5%;
+	font-size: 16px;
+}
+/* Generated Divs */
+.item { 
+	/* This is the div that holds the gif and rating */
+	/* width: 48%; */
+	display: inline-flex;
+	margin-bottom: 1%;
 }
 
 .gif{
-	width: 100%;
-	height: auto;
-} */
+	height:auto;
+	width:100%;
+	position: relative;
+}
+
+.rating{
+	font-size: 20px;
+	font-weight: bold;
+	position: absolute;
+	background-color: white;
+}
+/*  */
